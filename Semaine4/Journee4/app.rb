@@ -32,9 +32,9 @@ end
 show.show_board(game.board) # Affichage final
 
 if game.status == "winner"
-  puts "FÉLICITATIONS ! 🎉"
+  puts "FÉLICITATIONS ! "
   puts "#{game.current_player.name} a gagné la partie !"
 else
-  puts "MATCH NUL ! 🤝"
+  puts "MATCH NUL ! "
   puts "Personne n'a gagné, mais c'était un beau combat."
 end
