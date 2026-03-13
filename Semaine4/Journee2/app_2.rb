@@ -63,7 +63,7 @@ while user.life_points > 0 && (player1.life_points > 0 || player2.life_points > 
   gets.chomp   # pause pour lire le résultat avant de continuer
 
   # --- Riposte des ennemis ---
-  puts "\n💥 Les ennemis t'attaquent !"
+  puts "\n Les ennemis t'attaquent !"
 
   # On boucle sur le tableau enemies plutôt que d'écrire player1.attacks et player2.attacks
   # => anticipation : s'il y avait 20 ennemis, on n'écrirait pas 20 lignes
@@ -82,8 +82,8 @@ puts "\n" + "=" * 40
 puts "La partie est finie !"
 
 if user.life_points > 0
-  puts "🏆 BRAVO ! TU AS GAGNÉ !"
+  puts " BRAVO ! TU AS GAGNÉ !"
 else
-  puts "💀 Loser ! Tu as perdu !"
+  puts " Loser ! Tu as perdu !"
 end
 puts "=" * 40

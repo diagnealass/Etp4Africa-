@@ -34,10 +34,10 @@ class Game
   # -----------------------------------------------------------
   def show_players
     puts "\n" + "=" * 45
-    puts "🧑 TON ÉTAT :"
+    puts " TON ÉTAT :"
     @human_player.show_state
 
-    puts "\n⚔️  ENNEMIS EN VUE (#{@enemies_in_sight.length}) | #{@players_left} ennemis restants en tout"
+    puts "\n  ENNEMIS EN VUE (#{@enemies_in_sight.length}) | #{@players_left} ennemis restants en tout"
     if @enemies_in_sight.empty?
       puts "  (aucun ennemi en vue pour le moment)"
     else
@@ -113,7 +113,7 @@ class Game
   # et décrémente le compteur global
   # -----------------------------------------------------------
   def kill_player(player)
-    puts "💀 #{player.name} est éliminé de la partie !"
+    puts " #{player.name} est éliminé de la partie !"
     @enemies_in_sight.delete(player)   # retire de la liste des ennemis en vue
     @players_left -= 1                 # un ennemi de moins dans le monde
   end
@@ -123,7 +123,7 @@ class Game
   # Un ennemi mort (PV <= 0) ne peut pas attaquer
   # -----------------------------------------------------------
   def enemies_attack
-    puts "\n💥 Les ennemis t'attaquent !"
+    puts "\n Les ennemis t'attaquent !"
 
     @enemies_in_sight.each do |enemy|
       # Garde-fou : un ennemi à 0 PV ne joue plus
@@ -141,25 +141,25 @@ class Game
 
     # Cas 1 : tous les ennemis restants sont déjà visibles
     if @enemies_in_sight.length >= @players_left
-      puts "👀 Tous les ennemis restants sont déjà en vue !"
+      puts " Tous les ennemis restants sont déjà en vue !"
       return   # on sort immédiatement de la méthode
     end
 
     dice = rand(1..6)
 
     if dice == 1
-      puts "🌲 Tu regardes autour de toi... rien à signaler."
+      puts " Tu regardes autour de toi... rien à signaler."
 
     elsif dice.between?(2, 4)
       # Un seul nouvel ennemi apparaît
       add_enemy
-      puts "⚠️  Un nouvel adversaire est apparu !"
+      puts "  Un nouvel adversaire est apparu !"
 
     else # dice == 5 ou 6
       # Deux nouveaux ennemis apparaissent (si possible)
       nb_to_add = [@players_left - @enemies_in_sight.length, 2].min
       nb_to_add.times { add_enemy }
-      puts "🚨 #{nb_to_add} nouveaux adversaires sont apparus !"
+      puts " #{nb_to_add} nouveaux adversaires sont apparus !"
     end
   end
 
@@ -168,13 +168,13 @@ class Game
   # -----------------------------------------------------------
   def end_game
     puts "\n" + "=" * 45
-    puts "🏁 LA PARTIE EST FINIE"
+    puts " LA PARTIE EST FINIE"
 
     if @human_player.life_points > 0
-      puts "🏆 BRAVO ! TU AS GAGNÉ !"
+      puts " BRAVO ! TU AS GAGNÉ !"
       puts "Tu as éliminé tous les ennemis avec #{@human_player.life_points} PV restants."
     else
-      puts "💀 Loser ! Tu as perdu !"
+      puts " Loser ! Tu as perdu !"
       puts "Tu t'es fait éliminer... Meilleure chance la prochaine fois."
     end
     puts "=" * 45
