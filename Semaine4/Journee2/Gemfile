@@ -1,0 +1,6 @@
+source "https://rubygems.org"
+ruby '3.2.3' # Ou ta version actuelle (vérifie avec 'ruby -v')
+
+gem 'pry'    # Pour le débogage interactif que tu maîtrises maintenant
+gem 'rspec'  # Si jamais tu veux faire des tests unitaires comme en Java
+gem 'colorize' # Optionnel : pour mettre de la couleur dans ton terminal de jeu !

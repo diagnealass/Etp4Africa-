@@ -1,0 +1,19 @@
+# Le Gemfile liste toutes les bibliothèques (gems) dont ton projet a besoin.
+# C'est comme une liste de courses pour Ruby.
+
+source "https://rubygems.org"
+
+# Pour scraper des pages web (télécharger et lire le HTML)
+gem "nokogiri"
+
+# Pour faire des requêtes HTTP (aller chercher des pages web)
+gem "open-uri"
+
+# Pour lire les variables d'environnement depuis le fichier .env
+gem "dotenv"
+
+# Pour écrire des tests
+gem "rspec"
+
+# Pour les couleurs dans le terminal (optionnel, mais joli)
+gem "colorize"
