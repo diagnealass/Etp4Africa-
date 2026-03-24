@@ -1,7 +1,0 @@
-source "https://rubygems.org"
-
-ruby '3.2.3' # Vérifie ta version avec 'ruby -v' et adapte si besoin
-
-gem 'pry'       # Pour débugger comme un chef
-gem 'colorize'  # Pour mettre de la couleur dans ton terminal
-gem 'rspec'     # Si jamais tu veux faire des tests

@@ -1,1 +1,0 @@
-puts "Salut, ca farte 
