@@ -1,0 +1,14 @@
+<div class="card shadow mt-4">
+  <div class="card-body">
+    <h1 class="card-title"><%= @gossip.title %></h1>
+    <p class="text-muted">
+      Publié par
+      <%= link_to "#{@gossip.user.first_name} #{@gossip.user.last_name}", user_path(@gossip.user) %>
+      le <%= @gossip.created_at.strftime("%d/%m/%Y") %>
+    </p>
+    <hr>
+    <p><%= @gossip.content %></p>
+  </div>
+</div>
+
+<%= link_to "← Retour à l'accueil", root_path, class: "btn btn-secondary mt-3" %>
