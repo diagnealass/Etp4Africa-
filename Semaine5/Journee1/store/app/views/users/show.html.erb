@@ -1,0 +1,9 @@
+<div class="card shadow mt-4" style="max-width: 500px; margin: auto;">
+  <div class="card-body">
+    <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+    <p><strong>Email :</strong> <%= @user.email %></p>
+    <%# Ajoute d'autres champs selon ton model %>
+  </div>
+</div>
+
+<%= link_to "← Retour", :back, class: "btn btn-secondary mt-3" %>

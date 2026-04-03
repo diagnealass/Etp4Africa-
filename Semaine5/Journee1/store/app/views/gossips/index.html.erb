@@ -1,0 +1,18 @@
+<h1 class="mb-4">🗞️ Bienvenue sur The Big Project</h1>
+<p class="lead">Tous les potins du moment :</p>
+
+<div class="row">
+  <% @gossips.each do |gossip| %>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title"><%= gossip.title %></h5>
+          <p class="card-text text-muted">Par <%= gossip.user.first_name %></p>
+        </div>
+        <div class="card-footer">
+          <%= link_to "Voir plus →", gossip_path(gossip), class: "btn btn-primary btn-sm" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
