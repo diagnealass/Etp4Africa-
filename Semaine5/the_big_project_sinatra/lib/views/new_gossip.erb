@@ -1,3 +1,5 @@
+<!-- Page pour créer un nouveau potin : contient un formulaire
+     L'utilisateur peut saisir son nom et le contenu du potin, puis l'envoyer -->
 <html>
   <head>
     <title>Créer un potin</title>
@@ -6,12 +8,12 @@
     <h1>Crée un potin ! </h1>
     <p>Balance ton potin via le formulaire ci-dessous</p>
 
-    <form action='/gossips/new' method='POST'>
-      Ton nom : <input type='text' name='gossip_author'/><br/>
-      Ton potin : <input type='text' name='gossip_content'/><br/>
-      <input type='submit' value='Envoyer !'/>
+    <form action='/gossips/new' method='POST'>  <!-- Formulaire qui envoie les données à la route /gossips/new -->
+      Ton nom : <input type='text' name='gossip_author'/><br/>  <!-- Champ pour le nom de l'auteur -->
+      Ton potin : <input type='text' name='gossip_content'/><br/>  <!-- Champ pour le contenu du potin -->
+      <input type='submit' value='Envoyer !'/>  <!-- Bouton pour envoyer le formulaire -->
     </form>
 
-    <a href='/'> Retour à l'accueil</a>
+    <a href='/'> Retour à l'accueil</a>  <!-- Lien pour retourner à la page principale -->
   </body>
 </html>

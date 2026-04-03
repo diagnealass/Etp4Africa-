@@ -1,11 +1,13 @@
+<!-- Page de détail d'un potin : montre l'auteur et le contenu complet d'un potin spécifique
+     Permet de voir un potin en entier et de retourner à la liste -->
 <html>
   <head>
     <title>Potin</title>
   </head>
   <body>
     <h1>🗞️ Détail du potin</h1>
-    <p><strong>Auteur :</strong> <%= gossip.author %></p>
-    <p><strong>Potin :</strong> <%= gossip.content %></p>
-    <a href='/'>⬅️ Retour à l'accueil</a>
+    <p><strong>Auteur :</strong> <%= gossip.author %></p>  <!-- Affiche le nom de l'auteur -->
+    <p><strong>Potin :</strong> <%= gossip.content %></p>  <!-- Affiche le contenu du potin -->
+    <a href='/'>⬅️ Retour à l'accueil</a>  <!-- Lien pour retourner à la page d'accueil -->
   </body>
 </html>

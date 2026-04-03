@@ -1,3 +1,5 @@
+<!-- Page d'accueil du site : montre tous les potins existants
+     Chaque potin affiche l'auteur, le contenu, et un lien pour le voir en détail -->
 <html>
   <head>
     <title>The Gossip Project</title>
@@ -5,13 +7,13 @@
   <body>
     <h1> Les potins du jour !</h1>
 
-    <% gossips.each_with_index do |gossip, index| %>
+    <% gossips.each_with_index do |gossip, index| %>  <!-- Boucle pour afficher chaque potin -->
       <p>
-        <strong><%= gossip.author %></strong> dit : <%= gossip.content %>
-        <a href='/gossips/<%= index %>'> Voir</a>
+        <strong><%= gossip.author %></strong> dit : <%= gossip.content %>  <!-- Affiche auteur et contenu -->
+        <a href='/gossips/<%= index %>'> Voir</a>  <!-- Lien vers la page de détail -->
       </p>
     <% end %>
 
-    <a href='/gossips/new'> Ajouter un potin</a>
+    <a href='/gossips/new'> Ajouter un potin</a>  <!-- Lien pour créer un nouveau potin -->
   </body>
 </html>
