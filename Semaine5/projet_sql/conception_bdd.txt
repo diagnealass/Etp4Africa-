@@ -1,0 +1,108 @@
+Le projet dit : *"Il y a plein de cours. Chaque cours a un titre et une description. Chaque cours a plusieurs leçons, qui ont un titre et un body."*
+
+Voici la logique : un cours peut avoir plusieurs leçons, mais une leçon appartient à un seul cours. C'est donc une relation **1-N** entre `courses` et `lessons`.
+
+Copie ça dans ton fichier nano :
+```
+=== MOOCademy ===
+
+Table: courses
+- id (clé primaire)
+- title (TEXT)
+- description (TEXT)
+
+Table: lessons
+- id (clé primaire)
+- title (TEXT)
+- body (TEXT)
+- course_id (clé étrangère -> courses.id)  -- lien vers le cours parent
+
+Relation: 1-N entre courses et lessons
+(un cours a plusieurs leçons, une leçon appartient à un seul cours)
+```
+
+---
+
+### The Pinterest
+
+Le projet dit : *"Les utilisateurs peuvent créer des pins contenant l'URL d'une image. Les utilisateurs peuvent commenter les pins, mais pas les commentaires."*
+
+On a donc des `users`, des `pins` et des `comments`. Un user peut créer plusieurs pins (1-N). Un pin peut avoir plusieurs commentaires (1-N). Et un commentaire appartient à la fois à un user (qui l'a écrit) et à un pin (sur lequel il est posté).
+```
+=== The Pinterest ===
+
+Table: users
+- id (clé primaire)
+- name (TEXT)
+
+Table: pins
+- id (clé primaire)
+- image_url (TEXT)
+- user_id (clé étrangère -> users.id)  -- qui a créé le pin
+
+Table: comments
+- id (clé primaire)
+- body (TEXT)
+- user_id (clé étrangère -> users.id)  -- qui a écrit le commentaire
+- pin_id (clé étrangère -> pins.id)    -- sur quel pin
+
+Relations:
+- 1-N entre users et pins
+- 1-N entre pins et comments
+- 1-N entre users et comments
+```
+
+---
+
+### The News
+
+Celui-ci est le plus complexe. Le projet dit : *"Les utilisateurs peuvent poster des liens. Les autres peuvent commenter les liens, ou commenter les commentaires (mais pas plus loin). Comment savoir où un commentaire se trouve dans la hiérarchie ?"*
+
+La subtilité ici c'est qu'un commentaire peut répondre soit à un **lien**, soit à un **autre commentaire**. L'astuce c'est d'ajouter une colonne `parent_comment_id` dans la table `comments` — si cette colonne est vide (`NULL`), le commentaire répond directement à un lien. Si elle contient un id, le commentaire répond à un autre commentaire.
+```
+=== The News ===
+
+Table: users
+- id (clé primaire)
+- name (TEXT)
+
+Table: links
+- id (clé primaire)
+- url (TEXT)
+- title (TEXT)
+- user_id (clé étrangère -> users.id)  -- qui a posté le lien
+
+Table: comments
+- id (clé primaire)
+- body (TEXT)
+- user_id (clé étrangère -> users.id)       -- qui a écrit le commentaire
+- link_id (clé étrangère -> links.id)        -- sur quel lien
+- parent_comment_id (clé étrangère -> comments.id, peut être NULL)
+  -- si NULL : commentaire direct sur le lien
+  -- si rempli : réponse à un autre commentaire
+
+Relations:
+- 1-N entre users et links
+- 1-N entre links et comments
+- 1-N entre comments et comments (auto-référence)
+```
+
+---
+
+### The Class
+
+Le projet dit : *"Des élèves peuvent s'inscrire à un seul cours. Un cours peut avoir plusieurs élèves."* C'est simple — un élève appartient à un seul cours, donc c'est une relation **1-N**.
+```
+=== The Class ===
+
+Table: students
+- id (clé primaire)
+- name (TEXT)
+- course_id (clé étrangère -> courses.id)  -- l'unique cours de l'élève
+
+Table: courses
+- id (clé primaire)
+- title (TEXT)
+
+Relation: 1-N entre courses et students
+(un cours a plusieurs élèves, un élève est inscrit à un seul cours)
